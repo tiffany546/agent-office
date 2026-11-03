@@ -424,3 +424,5 @@ Every change to the app that lands on `main` is published as a GitHub release by
 ### Quantity surveying layout
 
 A four-room, sixteen-table layout is available as [`docs/maps/qs-four-rooms.json`](docs/maps/qs-four-rooms.json). See [custom maps](docs/maps.md#quantity-surveying-rooms) to install it.
+
+The QS map also has a coffee corner and idle-time worker strolls; workers return when work arrives. See [idle-time breaks](docs/maps.md#idle-time-breaks).

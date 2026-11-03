@@ -372,6 +372,34 @@
       "z": 11,
       "y": 5.5,
       "light": true
+    },
+    {
+      "kind": "dispenser",
+      "x": -18,
+      "z": 21,
+      "rotY": 1.5707963267948966
+    },
+    {
+      "kind": "table",
+      "x": -11,
+      "z": 21,
+      "width": 3,
+      "length": 1.5
+    },
+    {
+      "kind": "planter",
+      "x": -6,
+      "z": 22.8
+    },
+    {
+      "kind": "partition",
+      "x": -12,
+      "z": 23.5,
+      "width": 9,
+      "length": 0.3,
+      "height": 3.4,
+      "label": "Coffee & Break Corner",
+      "color": "#327b73"
     }
   ],
   "boards": {
@@ -432,7 +460,8 @@
   },
   "agents": {
     "outfit": "none",
-    "ageMinutes": 0
+    "ageMinutes": 0,
+    "roam": true
   },
   "palette": {
     "hull": "#e9edf2",

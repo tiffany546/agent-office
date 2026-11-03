@@ -282,3 +282,7 @@ A map without a dungeon can still have a script: a guard who walks each worker t
 ## Quantity surveying rooms
 
 Copy `docs/maps/qs-four-rooms.json` into `.agent-office/maps/` and choose **Quantity Surveying Office - Four Rooms** in Building settings. Four enclosed departments each have four two-seat tables, with 3 m corridor doorways. The first sixteen desk IDs are distributed four per department; the remaining seats retain the existing back-office/overflow rules. Room names describe work areas; no procurement or contract decisions are automated by the layout. Station-style maps also accept a `partition` prop (`width`, `length` for thickness, `height`, `rotY`, optional `color` and `label`). Its footprint blocks players and worker navigation; leave openings for access.
+
+### Idle-time breaks
+
+The QS map enables `agents.roam: true`: idle agent workers and acknowledged completed workers periodically stroll along navigable corridors, pause and cheer, then return to their assigned desks. Busy, unacknowledged, offline, meeting and lost-worktree workers do not take breaks. A new task cancels a stroll. The movement is local visual animation and never pauses the coding process or spends model tokens; each viewer may see slightly different timing. Set `agents.roam` to false in the map JSON to disable it.

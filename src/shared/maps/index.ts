@@ -369,6 +369,7 @@ export function planMap(input: unknown): MapPlan {
   if (dungeon) clear(dungeon.stairs.top[0], dungeon.stairs.top[1], 'the way onto the dungeon stairs');
   if (airlock) clear(airlock.front[0], airlock.front[1], 'the way up to the airlock');
   const sendHome = planSendHome(c.sendHome, bounds, free, dungeon, airlock);
+  if (c.agents?.roam !== undefined && typeof c.agents.roam !== 'boolean') throw new MapError('agents.roam should be true or false');
   const outfit = c.agents?.outfit === 'peasant' ? 'peasant' : 'none';
   const ageMinutes = c.agents?.ageMinutes === undefined ? 0 : num(c.agents.ageMinutes, 'agents.ageMinutes', 0, 100000);
   const byId = new Map([...desks, ...overflow, ...stations, ...meeting].map((d) => [d.id, d]));
