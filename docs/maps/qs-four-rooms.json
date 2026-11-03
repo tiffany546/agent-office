@@ -1,0 +1,473 @@
+{
+  "id": "qs-four-rooms",
+  "name": "Quantity Surveying Office - Four Rooms",
+  "icon": "\ud83c\udfe2",
+  "description": "Four departments, each with four tables, linked by a shared corridor.",
+  "style": "station",
+  "hall": {
+    "width": 44,
+    "length": 48,
+    "height": 6.5
+  },
+  "spawn": {
+    "x": 0,
+    "z": 20,
+    "rotY": 3.141592653589793
+  },
+  "door": {
+    "x": 0,
+    "z": 22.6
+  },
+  "tables": [
+    {
+      "name": "Tendering & Estimating - Table 1",
+      "x": -14,
+      "z": -14,
+      "length": 2.5,
+      "width": 1.5,
+      "seats": 1
+    },
+    {
+      "name": "Tendering & Estimating - Table 2",
+      "x": -8,
+      "z": -14,
+      "length": 2.5,
+      "width": 1.5,
+      "seats": 1
+    },
+    {
+      "name": "Tendering & Estimating - Table 3",
+      "x": -14,
+      "z": -8,
+      "length": 2.5,
+      "width": 1.5,
+      "seats": 1
+    },
+    {
+      "name": "Tendering & Estimating - Table 4",
+      "x": -8,
+      "z": -8,
+      "length": 2.5,
+      "width": 1.5,
+      "seats": 1
+    },
+    {
+      "name": "Procurement & Subcontracting - Table 1",
+      "x": 8,
+      "z": -14,
+      "length": 2.5,
+      "width": 1.5,
+      "seats": 1
+    },
+    {
+      "name": "Procurement & Subcontracting - Table 2",
+      "x": 14,
+      "z": -14,
+      "length": 2.5,
+      "width": 1.5,
+      "seats": 1
+    },
+    {
+      "name": "Procurement & Subcontracting - Table 3",
+      "x": 8,
+      "z": -8,
+      "length": 2.5,
+      "width": 1.5,
+      "seats": 1
+    },
+    {
+      "name": "Procurement & Subcontracting - Table 4",
+      "x": 14,
+      "z": -8,
+      "length": 2.5,
+      "width": 1.5,
+      "seats": 1
+    },
+    {
+      "name": "Post-Contract & Valuations - Table 1",
+      "x": -14,
+      "z": 8,
+      "length": 2.5,
+      "width": 1.5,
+      "seats": 1
+    },
+    {
+      "name": "Post-Contract & Valuations - Table 2",
+      "x": -8,
+      "z": 8,
+      "length": 2.5,
+      "width": 1.5,
+      "seats": 1
+    },
+    {
+      "name": "Post-Contract & Valuations - Table 3",
+      "x": -14,
+      "z": 14,
+      "length": 2.5,
+      "width": 1.5,
+      "seats": 1
+    },
+    {
+      "name": "Post-Contract & Valuations - Table 4",
+      "x": -8,
+      "z": 14,
+      "length": 2.5,
+      "width": 1.5,
+      "seats": 1
+    },
+    {
+      "name": "Legal & Dispute Resolution - Table 1",
+      "x": 8,
+      "z": 8,
+      "length": 2.5,
+      "width": 1.5,
+      "seats": 1
+    },
+    {
+      "name": "Legal & Dispute Resolution - Table 2",
+      "x": 14,
+      "z": 8,
+      "length": 2.5,
+      "width": 1.5,
+      "seats": 1
+    },
+    {
+      "name": "Legal & Dispute Resolution - Table 3",
+      "x": 8,
+      "z": 14,
+      "length": 2.5,
+      "width": 1.5,
+      "seats": 1
+    },
+    {
+      "name": "Legal & Dispute Resolution - Table 4",
+      "x": 14,
+      "z": 14,
+      "length": 2.5,
+      "width": 1.5,
+      "seats": 1
+    }
+  ],
+  "props": [
+    {
+      "kind": "partition",
+      "x": -11,
+      "z": -19,
+      "width": 16,
+      "length": 0.3,
+      "height": 3.6,
+      "color": "#e5e9ed"
+    },
+    {
+      "kind": "partition",
+      "x": -11,
+      "z": -3,
+      "width": 16,
+      "length": 0.3,
+      "height": 3.6,
+      "color": "#e5e9ed"
+    },
+    {
+      "kind": "partition",
+      "x": -19,
+      "z": -11,
+      "width": 16,
+      "length": 0.3,
+      "height": 3.6,
+      "rotY": 1.5707963267948966,
+      "color": "#e5e9ed"
+    },
+    {
+      "kind": "partition",
+      "x": -3,
+      "z": -15.75,
+      "width": 6.5,
+      "length": 0.3,
+      "height": 3.6,
+      "rotY": 1.5707963267948966,
+      "label": "Tendering & Estimating",
+      "color": "#2b7a91"
+    },
+    {
+      "kind": "partition",
+      "x": -3,
+      "z": -6.25,
+      "width": 6.5,
+      "length": 0.3,
+      "height": 3.6,
+      "rotY": 1.5707963267948966,
+      "color": "#2b7a91"
+    },
+    {
+      "kind": "lamp",
+      "x": -11,
+      "z": -11,
+      "y": 5.5,
+      "light": true
+    },
+    {
+      "kind": "partition",
+      "x": 11,
+      "z": -19,
+      "width": 16,
+      "length": 0.3,
+      "height": 3.6,
+      "color": "#e5e9ed"
+    },
+    {
+      "kind": "partition",
+      "x": 11,
+      "z": -3,
+      "width": 16,
+      "length": 0.3,
+      "height": 3.6,
+      "color": "#e5e9ed"
+    },
+    {
+      "kind": "partition",
+      "x": 3,
+      "z": -15.75,
+      "width": 6.5,
+      "length": 0.3,
+      "height": 3.6,
+      "rotY": 1.5707963267948966,
+      "label": "Procurement & Subcontracting",
+      "color": "#ba8242"
+    },
+    {
+      "kind": "partition",
+      "x": 3,
+      "z": -6.25,
+      "width": 6.5,
+      "length": 0.3,
+      "height": 3.6,
+      "rotY": 1.5707963267948966,
+      "color": "#ba8242"
+    },
+    {
+      "kind": "partition",
+      "x": 19,
+      "z": -11,
+      "width": 16,
+      "length": 0.3,
+      "height": 3.6,
+      "rotY": 1.5707963267948966,
+      "color": "#e5e9ed"
+    },
+    {
+      "kind": "lamp",
+      "x": 11,
+      "z": -11,
+      "y": 5.5,
+      "light": true
+    },
+    {
+      "kind": "partition",
+      "x": -11,
+      "z": 3,
+      "width": 16,
+      "length": 0.3,
+      "height": 3.6,
+      "color": "#e5e9ed"
+    },
+    {
+      "kind": "partition",
+      "x": -11,
+      "z": 19,
+      "width": 16,
+      "length": 0.3,
+      "height": 3.6,
+      "color": "#e5e9ed"
+    },
+    {
+      "kind": "partition",
+      "x": -19,
+      "z": 11,
+      "width": 16,
+      "length": 0.3,
+      "height": 3.6,
+      "rotY": 1.5707963267948966,
+      "color": "#e5e9ed"
+    },
+    {
+      "kind": "partition",
+      "x": -3,
+      "z": 6.25,
+      "width": 6.5,
+      "length": 0.3,
+      "height": 3.6,
+      "rotY": 1.5707963267948966,
+      "label": "Post-Contract & Valuations",
+      "color": "#49856b"
+    },
+    {
+      "kind": "partition",
+      "x": -3,
+      "z": 15.75,
+      "width": 6.5,
+      "length": 0.3,
+      "height": 3.6,
+      "rotY": 1.5707963267948966,
+      "color": "#49856b"
+    },
+    {
+      "kind": "lamp",
+      "x": -11,
+      "z": 11,
+      "y": 5.5,
+      "light": true
+    },
+    {
+      "kind": "partition",
+      "x": 11,
+      "z": 3,
+      "width": 16,
+      "length": 0.3,
+      "height": 3.6,
+      "color": "#e5e9ed"
+    },
+    {
+      "kind": "partition",
+      "x": 11,
+      "z": 19,
+      "width": 16,
+      "length": 0.3,
+      "height": 3.6,
+      "color": "#e5e9ed"
+    },
+    {
+      "kind": "partition",
+      "x": 3,
+      "z": 6.25,
+      "width": 6.5,
+      "length": 0.3,
+      "height": 3.6,
+      "rotY": 1.5707963267948966,
+      "label": "Legal & Dispute Resolution",
+      "color": "#78638e"
+    },
+    {
+      "kind": "partition",
+      "x": 3,
+      "z": 15.75,
+      "width": 6.5,
+      "length": 0.3,
+      "height": 3.6,
+      "rotY": 1.5707963267948966,
+      "color": "#78638e"
+    },
+    {
+      "kind": "partition",
+      "x": 19,
+      "z": 11,
+      "width": 16,
+      "length": 0.3,
+      "height": 3.6,
+      "rotY": 1.5707963267948966,
+      "color": "#e5e9ed"
+    },
+    {
+      "kind": "lamp",
+      "x": 11,
+      "z": 11,
+      "y": 5.5,
+      "light": true
+    },
+    {
+      "kind": "dispenser",
+      "x": -18,
+      "z": 21,
+      "rotY": 1.5707963267948966
+    },
+    {
+      "kind": "table",
+      "x": -11,
+      "z": 21,
+      "width": 3,
+      "length": 1.5
+    },
+    {
+      "kind": "planter",
+      "x": -6,
+      "z": 22.8
+    },
+    {
+      "kind": "partition",
+      "x": -12,
+      "z": 23.5,
+      "width": 9,
+      "length": 0.3,
+      "height": 3.4,
+      "label": "Coffee & Break Corner",
+      "color": "#327b73"
+    }
+  ],
+  "boards": {
+    "issues": {
+      "x": -12,
+      "y": 2.6,
+      "z": -23.92,
+      "rotY": 0,
+      "width": 6,
+      "height": 2.6
+    },
+    "queue": {
+      "x": 0,
+      "y": 2.6,
+      "z": -23.92,
+      "rotY": 0,
+      "width": 6,
+      "height": 2.6
+    },
+    "pulls": {
+      "x": 12,
+      "y": 2.6,
+      "z": -23.92,
+      "rotY": 0,
+      "width": 6,
+      "height": 2.6
+    },
+    "services": {
+      "x": -21.92,
+      "y": 2.6,
+      "z": 21,
+      "rotY": 1.5707963267948966,
+      "width": 6,
+      "height": 2.6
+    }
+  },
+  "stations": {
+    "issues": {
+      "x": -12,
+      "z": -21.8,
+      "rotY": 3.141592653589793
+    },
+    "queue": {
+      "x": 0,
+      "z": -21.8,
+      "rotY": 3.141592653589793
+    },
+    "pulls": {
+      "x": 12,
+      "z": -21.8,
+      "rotY": 3.141592653589793
+    }
+  },
+  "council": {
+    "x": 12,
+    "z": 21,
+    "rotY": 0
+  },
+  "agents": {
+    "outfit": "none",
+    "ageMinutes": 0,
+    "roam": true
+  },
+  "palette": {
+    "hull": "#e9edf2",
+    "deck": "#d4dce5",
+    "panel": "#b9c9d4",
+    "metal": "#526779",
+    "glow": "#219dba"
+  }
+}

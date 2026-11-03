@@ -22,7 +22,7 @@ const HOP = 0.5;
 const FEET = 0.07;
 
 /** Where it's going: its seat, or a spot in line (its index). */
-type Goal = { seat: true } | { spot: number };
+type Goal = { seat: true } | { spot: number } | { point: Pt };
 
 interface Courtier {
   id: string;
@@ -43,13 +43,14 @@ interface Courtier {
 }
 
 const wrap = (a: number) => Math.atan2(Math.sin(a), Math.cos(a));
-const sameGoal = (a: Goal, b: Goal) => ('seat' in a ? 'seat' in b : 'spot' in b && a.spot === b.spot);
+const sameGoal = (a: Goal, b: Goal) => ('seat' in a ? 'seat' in b : 'spot' in a ? 'spot' in b && a.spot === b.spot : 'point' in b && a.point[0] === b.point[0] && a.point[1] === b.point[1]);
 
 export class Court {
   /** One for each spot in line: walk up to whoever stands there, as at its seat. */
   readonly interactables: Interactable[];
   private people = new Map<string, Courtier>();
   private readonly tmp = new THREE.Vector3();
+  private roamingSpots = new Map<string, Interactable>();
 
   constructor(
     private parent: THREE.Object3D,
@@ -85,6 +86,9 @@ export class Court {
     const c = this.people.get(id);
     if (!c) return undefined;
     this.people.delete(id);
+    const marker = this.roamingSpots.get(id);
+    if (marker) this.interactables.splice(this.interactables.indexOf(marker), 1);
+    this.roamingSpots.delete(id);
     c.model.walking = false;
     c.model.gait = 1;
     delete c.model.root.userData.interact;
@@ -106,12 +110,31 @@ export class Court {
     return c && c.state !== 'seated' && 'spot' in c.goal ? c.goal.spot : -1;
   }
 
+  /** Visual breaks do not change agent execution or its assigned desk. */
+  roam(id: string, point: Pt): boolean {
+    const c = this.people.get(id);
+    if (!c || !this.nav.walkable(point[0], point[1])) return false;
+    if (!this.roamingSpots.has(id)) {
+      const marker: Interactable = { kind: 'desk', x: point[0], z: point[1], radius: 1.3, deskId: c.desk.def.id, off: true };
+      this.roamingSpots.set(id, marker);
+      this.interactables.push(marker);
+    }
+    c.pace = WALK;
+    this.walkTo(c, { point });
+    return true;
+  }
+
+  roaming(id: string): boolean { const c = this.people.get(id); return !!c && 'point' in c.goal; }
+  travelling(id: string): boolean { const c = this.people.get(id); return !!c && c.state !== 'stand' && c.state !== 'seated'; }
+  home(id: string) { const c = this.people.get(id); if (c && 'point' in c.goal) this.walkTo(c, { seat: true }); }
+
   /** Who's waiting on someone, the one who's waited longest first: they line up in that order, as many as there are spots. */
   line(waiting: readonly string[]) {
     const spots = this.plan.lineup.length;
     const order = waiting.filter((id) => this.people.has(id)).slice(0, spots);
     for (const c of this.people.values()) {
       const i = order.indexOf(c.id);
+      if (i < 0 && 'point' in c.goal && !waiting.includes(c.id)) continue;
       const goal: Goal = i >= 0 ? { spot: i } : { seat: true };
       if (sameGoal(goal, c.goal)) continue;
       c.pace = WALK;
@@ -128,7 +151,11 @@ export class Court {
   private readonly walking: THREE.Vector3[] = [];
 
   update(dt: number) {
-    for (const c of this.people.values()) this.step(c, dt);
+    for (const c of this.people.values()) {
+      this.step(c, dt);
+      const marker = this.roamingSpots.get(c.id);
+      if (marker) { marker.x = c.model.root.position.x; marker.z = c.model.root.position.z; marker.off = c.state === 'seated'; }
+    }
   }
 
   /**
@@ -142,7 +169,7 @@ export class Court {
       it.deskId = undefined;
     }
     for (const c of this.people.values()) {
-      const it = c.state === 'stand' && 'spot' in c.goal ? this.interactables[c.goal.spot] : undefined;
+      const it = c.state === 'stand' && 'spot' in c.goal ? this.interactables[c.goal.spot] : c.state !== 'seated' ? this.roamingSpots.get(c.id) : undefined;
       if (it) {
         it.off = false;
         it.deskId = c.desk.def.id;
@@ -169,7 +196,7 @@ export class Court {
   private walkTo(c: Courtier, goal: Goal): void {
     c.goal = goal;
     c.model.stopDancing();
-    const target: Pt | null = 'spot' in goal ? [this.plan.lineup[goal.spot].x, this.plan.lineup[goal.spot].z] : null;
+    const target: Pt | null = 'point' in goal ? goal.point : 'spot' in goal ? [this.plan.lineup[goal.spot].x, this.plan.lineup[goal.spot].z] : null;
     if (c.state === 'seated') {
       if (!target) return;
       this.detach(c);
@@ -178,6 +205,7 @@ export class Court {
       c.state = 'down';
       c.hop = 0;
       c.next = 0;
+      this.freeSpots();
       return;
     }
     const p = c.model.root.position;

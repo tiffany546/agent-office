@@ -62,6 +62,8 @@ export interface TableConfig {
  */
 export interface PropConfig {
   kind: string;
+  /** Optional text on an interior partition. */
+  label?: string;
   x: number;
   z: number;
   /** Up off the floor (a banner, a window, a chandelier). */
@@ -198,7 +200,7 @@ export interface MapConfig {
   boards: Record<BoardKey, BoardPlace>;
   props?: PropConfig[];
   /** How the workers look here: an outfit, and how many minutes of work until they look worn out (0: they never do). */
-  agents?: { outfit?: 'peasant' | 'none'; ageMinutes?: number };
+  agents?: { outfit?: 'peasant' | 'none'; ageMinutes?: number; roam?: boolean };
   /**
    * Colors, as CSS colors: a castle's stone, floor, carpet, wood and trim; a station's hull, deck,
    * panel, metal and glow.

@@ -326,6 +326,7 @@ export function planMap(input: unknown): MapPlan {
     opt(p.width, `${what}.width`, 0.3, 20);
     opt(p.height, `${what}.height`, 0.3, 20);
     opt(p.length, `${what}.length`, 0.3, 120);
+    if (p.label !== undefined) str(p.label, `${what}.label`, 100);
     if (p.light !== undefined && typeof p.light !== 'boolean') throw new MapError(`${what}.light should be true or false`);
     // What hangs on a wall, or from the roof, has to fit under the walls' top.
     const top = kinds.top(p);
@@ -368,6 +369,7 @@ export function planMap(input: unknown): MapPlan {
   if (dungeon) clear(dungeon.stairs.top[0], dungeon.stairs.top[1], 'the way onto the dungeon stairs');
   if (airlock) clear(airlock.front[0], airlock.front[1], 'the way up to the airlock');
   const sendHome = planSendHome(c.sendHome, bounds, free, dungeon, airlock);
+  if (c.agents?.roam !== undefined && typeof c.agents.roam !== 'boolean') throw new MapError('agents.roam should be true or false');
   const outfit = c.agents?.outfit === 'peasant' ? 'peasant' : 'none';
   const ageMinutes = c.agents?.ageMinutes === undefined ? 0 : num(c.agents.ageMinutes, 'agents.ageMinutes', 0, 100000);
   const byId = new Map([...desks, ...overflow, ...stations, ...meeting].map((d) => [d.id, d]));

@@ -10,6 +10,7 @@ import type { PropConfig } from './types.js';
 
 export const STATION_PROP_KINDS = {
   /** A hull rib across the hall at `z`: a column up each side wall, and a beam across the ceiling between them. */
+  partition: 'An interior wall with an optional room sign',
   rib: 'A hull rib: a column up each side wall and a beam across the ceiling',
   /** A window cut through the wall it's on, its sill at `y`, `width` by `height`: space shows through it. */
   viewport: 'A window out into space',
@@ -48,6 +49,8 @@ export function stationFootprint(p: PropConfig): { rect?: Rect; circle?: Circle 
   const s = p.scale ?? 1;
   const r = p.rotY ?? 0;
   switch (p.kind) {
+    case 'partition':
+      return { rect: boxFootprint(p.x, p.z, p.width ?? 3, p.length ?? 0.3, r) };
     case 'hologram':
       return { circle: [p.x, p.z, STATION_SIZE.hologram * s] };
     case 'planter':
@@ -68,6 +71,8 @@ export function stationFootprint(p: PropConfig): { rect?: Rect; circle?: Circle 
 /** How high up a station's prop that's on a wall or hangs from the ceiling reaches (0 for what stands on the deck). */
 export function stationTop(p: PropConfig): number {
   switch (p.kind) {
+    case 'partition':
+      return p.height ?? 3.4;
     case 'viewport':
       return (p.y ?? VIEWPORT.y) + (p.height ?? VIEWPORT.height);
     case 'screen':
