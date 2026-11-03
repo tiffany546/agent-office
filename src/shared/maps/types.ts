@@ -62,6 +62,8 @@ export interface TableConfig {
  */
 export interface PropConfig {
   kind: string;
+  /** Optional text on an interior partition. */
+  label?: string;
   x: number;
   z: number;
   /** Up off the floor (a banner, a window, a chandelier). */

@@ -420,3 +420,7 @@ Every change to the app that lands on `main` is published as a GitHub release by
 ## License
 
 [MIT](LICENSE)
+
+### Quantity surveying layout
+
+A four-room, sixteen-table layout is available as [`docs/maps/qs-four-rooms.json`](docs/maps/qs-four-rooms.json). See [custom maps](docs/maps.md#quantity-surveying-rooms) to install it.

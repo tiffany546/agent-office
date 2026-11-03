@@ -326,6 +326,7 @@ export function planMap(input: unknown): MapPlan {
     opt(p.width, `${what}.width`, 0.3, 20);
     opt(p.height, `${what}.height`, 0.3, 20);
     opt(p.length, `${what}.length`, 0.3, 120);
+    if (p.label !== undefined) str(p.label, `${what}.label`, 100);
     if (p.light !== undefined && typeof p.light !== 'boolean') throw new MapError(`${what}.light should be true or false`);
     // What hangs on a wall, or from the roof, has to fit under the walls' top.
     const top = kinds.top(p);

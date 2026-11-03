@@ -7,6 +7,7 @@ import { canvasTexture } from '../texture';
 import { mesh, roundedBox, textPlane, toon } from '../toon';
 import { MAX_LIGHTS, TABLE_TOP, box, collide, lit, placed, type Kit } from './kit';
 import { telemetry } from './textures';
+import { partition } from './partition';
 
 // The props a station-style map places (see shared/maps/station-props.ts): the hull's ribs, light
 // pods and the strips in the deck, displays, the holo-table, planters, cargo, the gong and the
@@ -206,6 +207,7 @@ function plainTable(kit: Kit, p: PropConfig) {
 
 /** Each kind of prop, put up (every kind there is has one: see STATION_PROP_KINDS). */
 export const PROPS: Record<StationPropKind, (kit: Kit, p: PropConfig) => void> = {
+  partition,
   rib,
   // Cut through its wall by the shell, frame and glass and all.
   viewport: () => {},
